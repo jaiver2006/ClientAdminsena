@@ -26,7 +26,12 @@
                                     type="text"
                                     name="name"
                                     class="form-control"
-                                    placeholder="Ej. Centro de Innovación">
+                                    value="{{ old('name') }}"
+                                    placeholder="Ej. Centro de Innovación"
+                                    required>
+                                @error('name')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="mb-4">
@@ -37,7 +42,25 @@
                                     type="text"
                                     name="location"
                                     class="form-control"
-                                    placeholder="Ej. Bloque B, Piso 2">
+                                    value="{{ old('location') }}"
+                                    placeholder="Ej. Bloque B, Piso 2"
+                                    required>
+                                @error('location')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
+                            </div>
+
+                            <div class="mb-4">
+                                <label class="form-label fw-bold">Imagen del Centro</label>
+                                <input
+                                    type="file"
+                                    name="imagen"
+                                    class="form-control"
+                                    accept="image/jpeg,image/png,image/webp"
+                                    required>
+                                @error('imagen')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
 
                             <div class="d-grid">

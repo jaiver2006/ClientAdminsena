@@ -271,6 +271,7 @@
                     <th class="numero">#</th>
                     <th>Nombre</th>
                     <th>Ubicación</th>
+                    <th>Imagen</th>
                     <th>Acciones</th>
                 </tr>
             </thead>
@@ -280,6 +281,14 @@
                         <td class="numero">{{ $loop->iteration }}</td>
                         <td>{{ $trainingCenter['name'] }}</td>
                         <td>{{ $trainingCenter['location'] }}</td>
+                        <td>
+                            @if (!empty($trainingCenter['imagen_url']))
+                                <img src="{{ $trainingCenter['imagen_url'] }}" alt="{{ $trainingCenter['name'] }}"
+                                    width="100">
+                            @else
+                                Sin imagen
+                            @endif
+                        </td>
                         <td class="acciones">
                             <a href="{{ route('training-center.show', $trainingCenter['id']) }}"
                                 class="mostrar">Mostrar</a>
@@ -290,7 +299,7 @@
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4" style="text-align:center;padding:20px">No hay centros registrados.</td>
+                        <td colspan="5" style="text-align:center;padding:20px">No hay centros registrados.</td>
                     </tr>
                 @endforelse
             </tbody>

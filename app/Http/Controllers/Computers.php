@@ -39,9 +39,23 @@ class Computers extends Controller
 
     public function store(Request $request)
     {
-        $url = env('URL_SERVER_API');
+        $request->validate([
+            'number' => 'required|integer',
+            'brand' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
 
-        Http::post($url . '/computers', $request->all());
+        $url = env('URL_SERVER_API');
+        $file = $request->file('imagen');
+
+        Http::attach(
+            'imagen',
+            file_get_contents($file->getRealPath()),
+            $file->getClientOriginalName()
+        )->post($url . '/computers', [
+            'number' => $request->number,
+            'brand' => $request->brand,
+        ])->throw();
 
         return redirect()->route('computers.index');
     }

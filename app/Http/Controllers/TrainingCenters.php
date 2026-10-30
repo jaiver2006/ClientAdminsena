@@ -40,9 +40,23 @@ class TrainingCenters extends Controller
 
     public function store(Request $request)
     {
-        $url = env('URL_SERVER_API');
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'imagen' => 'required|image|mimes:jpg,jpeg,png,webp|max:5120',
+        ]);
 
-        Http::post($url . '/training-centers', $request->all());
+        $url = env('URL_SERVER_API');
+        $file = $request->file('imagen');
+
+        Http::attach(
+            'imagen',
+            file_get_contents($file->getRealPath()),
+            $file->getClientOriginalName()
+        )->post($url . '/training-centers', [
+            'name' => $request->name,
+            'location' => $request->location,
+        ])->throw();
 
         return redirect()->route('training-centers.index');
     }
