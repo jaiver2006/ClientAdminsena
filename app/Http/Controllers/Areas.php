@@ -20,7 +20,7 @@ class Areas extends Controller
         $url = env('URL_SERVER_API');
 
         $areas = $this->fetchDataFromApi($url . '/areas');
-        return view('areas.index', compact('areas'));
+        return view('Areas.index', compact('areas'));
     }
 
     public function show($id)
@@ -30,12 +30,12 @@ class Areas extends Controller
 
         $area = $this->fetchDataFromApi($url . '/areas/' . $id);
 
-        return view('areas.show', compact('area'));
+        return view('Areas.show', compact('area'));
     }
 
     public function create()
     {
-        return view('areas.create');
+        return view('Areas.create');
     }
 
     public function store(Request $request)
@@ -51,7 +51,7 @@ class Areas extends Controller
     {
         $url = env('URL_SERVER_API');
         $area = $this->fetchDataFromApi($url . '/areas/' . $id);
-        return view('areas.edit', compact('area'));
+        return view('Areas.edit', compact('area'));
     }
 
     public function update(Request $request, $id)

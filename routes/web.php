@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Http;
 use App\Http\Controllers\Areas;
 use App\Http\Controllers\TrainingCenters;
 use App\Http\Controllers\Computers;
@@ -19,7 +20,20 @@ use App\Http\Controllers\ApprenticesController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    $apiUrl = rtrim(env('URL_SERVER_API'), '/');
+
+    $apprentices = Http::get($apiUrl . '/apprentices')->throw()->json();
+    $teachers = Http::get($apiUrl . '/teachers')->throw()->json();
+    $courses = Http::get($apiUrl . '/courses')->throw()->json();
+    $computers = Http::get($apiUrl . '/computers')->throw()->json();
+
+    return view('welcome', [
+        'apprenticesCount' => count($apprentices),
+        'teachersCount' => count($teachers),
+        'coursesCount' => count($courses),
+        'computersCount' => count($computers),
+        'recentActivities' => [],
+    ]);
 })->name('dashboard');
 
 /*aAres*/

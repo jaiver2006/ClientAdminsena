@@ -19,7 +19,7 @@ class Computers extends Controller
         $url = env('URL_SERVER_API');
 
         $computers = $this->fetchDataFromApi($url . '/computers');
-        return view('computers.index', compact('computers'));
+        return view('Computers.index', compact('computers'));
     }
 
     public function show($id)
@@ -29,12 +29,12 @@ class Computers extends Controller
 
         $computer = $this->fetchDataFromApi($url . '/computers/' . $id);
 
-        return view('computers.show', compact('computer'));
+        return view('Computers.show', compact('computer'));
     }
 
     public function create()
     {
-        return view('computers.create');
+        return view('Computers.create');
     }
 
     public function store(Request $request)
@@ -50,7 +50,7 @@ class Computers extends Controller
     {
         $url = env('URL_SERVER_API');
         $computer = $this->fetchDataFromApi($url . '/computers/' . $id);
-        return view('computers.edit', compact('computer'));
+        return view('Computers.edit', compact('computer'));
     }
 
     public function update(Request $request, $id)

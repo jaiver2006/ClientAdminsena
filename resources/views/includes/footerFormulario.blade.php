@@ -191,15 +191,8 @@
             <h3>Accesos rápidos</h3>
             <nav class="footer-links" aria-label="Accesos rápidos">
                 <a href="{{ route('dashboard') }}"><i class="fas fa-house"></i> Panel principal</a>
-                @if (\Illuminate\Support\Facades\Route::has('noticias.index'))
-                    <a href="{{ route('noticias.index') }}"><i class="fas fa-newspaper"></i> Noticias</a>
-                @endif
-                @if (\Illuminate\Support\Facades\Route::has('informacion.index'))
-                    <a href="{{ route('informacion.index') }}"><i class="fas fa-circle-info"></i> Conócenos</a>
-                @endif
-                @if (\Illuminate\Support\Facades\Route::has('uniforme.index'))
-                    <a href="{{ route('uniforme.index') }}"><i class="fas fa-shirt"></i> Uniforme SENA</a>
-                @endif
+                <a href="{{ route('areas.index') }}"><i class="fas fa-layer-group"></i> Áreas</a>
+                <a href="{{ route('computers.index') }}"><i class="fas fa-desktop"></i> Computadores</a>
             </nav>
         </div>
 

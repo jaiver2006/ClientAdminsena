@@ -1,106 +1,126 @@
 @extends('layouts.appFormulario')
 
 @section('content')
-    <div class="container mt-5">
-        <div class="row justify-content-center">
-            <div class="col-md-7">
 
-                <div class="card shadow-lg border-0 rounded-4">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-7">
 
-                    <div class="card-header text-center text-white" style="background-color:#004d11;">
-                        <h3 class="mb-0">
-                            <i class="fas fa-book me-2"></i>
-                            Registro de Curso
-                        </h3>
-                    </div>
+            <div class="card shadow-lg border-0 rounded-4">
 
-                    <div class="card-body p-4">
+                <div class="card-header text-center text-white" style="background-color:#004d11;">
+                    <h3 class="mb-0">
+                        <i class="fas fa-book me-2"></i>
+                        Registro de Curso
+                    </h3>
+                </div>
 
-                        <form action="{{ route('course.store') }}" method="POST">
-                            @csrf
+                <div class="card-body p-4">
 
-                            <!-- Número del curso -->
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">
-                                    Número del Curso
-                                </label>
+                    <form action="{{ route('course.store') }}" method="POST">
+                        @csrf
 
-                                <input type="number" name="numero_de_curso" class="form-control"
-                                    placeholder="Ingrese el número del curso" required>
-                            </div>
+                        <!-- Número del curso -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Número del Curso
+                            </label>
 
-
-                            <!-- Fecha -->
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">
-                                    Fecha
-                                </label>
-
-                                <input type="date" name="day" class="form-control" required>
-                            </div>
+                            <input
+                                type="number"
+                                name="numero_de_curso"
+                                class="form-control"
+                                placeholder="Ingrese el número del curso"
+                                required>
+                        </div>
 
 
-                            <!-- Área -->
-                            <div class="mb-3">
-                                <label class="form-label fw-bold">
-                                    Área
-                                </label>
+                        <!-- Fecha -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Fecha
+                            </label>
 
-                                <select name="area_id" class="form-select" required>
+                            <input
+                                type="date"
+                                name="day"
+                                class="form-control"
+                                required>
+                        </div>
 
-                                    <option value="">
-                                        Seleccione un área
+
+                        <!-- Área -->
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">
+                                Área
+                            </label>
+
+                            <select 
+                                name="area_id" 
+                                class="form-select"
+                                required>
+
+                                <option value="">
+                                    Seleccione un área
+                                </option>
+
+                                @foreach ($areas as $area)
+
+                                    <option value="{{ $area['id'] }}">
+                                        {{ $area['name'] }}
                                     </option>
 
-                                    @foreach ($areas as $area)
-                                        <option value="{{ $area['id'] }}">
-                                            {{ $area['name'] }}
-                                        </option>
-                                    @endforeach
+                                @endforeach
 
-                                </select>
-                            </div>
+                            </select>
+                        </div>
 
 
-                            <!-- Centro de formación -->
-                            <div class="mb-4">
-                                <label class="form-label fw-bold">
-                                    Centro de Formación
-                                </label>
+                        <!-- Centro de formación -->
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">
+                                Centro de Formación
+                            </label>
 
-                                <select name="training_centers_id" class="form-select" required>
+                            <select 
+                                name="training_centers_id" 
+                                class="form-select"
+                                required>
 
-                                    <option value="">
-                                        Seleccione un centro de formación
+                                <option value="">
+                                    Seleccione un centro de formación
+                                </option>
+
+                                @foreach ($trainingCenters as $training)
+
+                                    <option value="{{ $training['id'] }}">
+                                        {{ $training['name'] }}
                                     </option>
 
-                                    @foreach ($trainingCenters as $training)
-                                        <option value="{{ $training['id'] }}">
-                                            {{ $training['name'] }}
-                                        </option>
-                                    @endforeach
+                                @endforeach
 
-                                </select>
-                            </div>
+                            </select>
+                        </div>
 
 
-                            <div class="d-grid">
-                                <button type="submit" class="btn btn-success btn-lg">
-                                    <i class="fas fa-save me-2"></i>
-                                    Registrar Curso
-                                </button>
-                            </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success btn-lg">
+                                <i class="fas fa-save me-2"></i>
+                                Registrar Curso
+                            </button>
+                        </div>
 
-                        </form>
-
-                    </div>
+                    </form>
 
                 </div>
 
             </div>
+
         </div>
     </div>
+</div>
 
-    <br>
-    <br>
+<br>
+<br>
+
 @endsection

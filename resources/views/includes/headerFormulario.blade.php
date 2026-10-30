@@ -15,66 +15,46 @@
             <ul class="navbar-nav mx-auto d-none d-lg-flex">
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('area.*') ? 'active' : '' }}"
-                        href="{{ route('area.create') }}">
+                    <a class="nav-link {{ request()->routeIs('area.*', 'areas.*') ? 'active' : '' }}"
+                        href="{{ route('areas.index') }}">
                         <i class="fas fa-layer-group"></i> Áreas
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('computer.*') ? 'active' : '' }}"
+                    <a class="nav-link {{ request()->routeIs('computer.*', 'computers.*') ? 'active' : '' }}"
                         href="{{ route('computers.index') }}">
                         <i class="fas fa-desktop"></i> Computadores
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link {{ request()->routeIs('training-center.*') ? 'active' : '' }}"
-                        href="{{ route('training-center.create') }}">
+                    <a class="nav-link {{ request()->routeIs('training-center.*', 'training-centers.*') ? 'active' : '' }}"
+                        href="{{ route('training-centers.index') }}">
                         <i class="fas fa-building"></i> Centros
                     </a>
                 </li>
 
-                @if (\Illuminate\Support\Facades\Route::has('course.create'))
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('course.*') ? 'active' : '' }}"
-                            href="{{ route('course.create') }}">
-                            <i class="fas fa-book"></i> Cursos
-                        </a>
-                    </li>
-                @endif
-                @if (\Illuminate\Support\Facades\Route::has('teacher.create'))
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('teacher.*') ? 'active' : '' }}"
-                            href="{{ route('teacher.create') }}">
-                            <i class="fas fa-chalkboard-user"></i> Instructores
-                        </a>
-                    </li>
-                @endif
-                @if (\Illuminate\Support\Facades\Route::has('aprendiz.create'))
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('aprendiz.*') ? 'active' : '' }}"
-                            href="{{ route('aprendiz.create') }}">
-                            <i class="fas fa-user-graduate"></i> Aprendices
-                        </a>
-                    </li>
-                @endif
-                @if (\Illuminate\Support\Facades\Route::has('uniforme.index'))
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('uniforme.*') ? 'active' : '' }}"
-                            href="{{ route('uniforme.index') }}">
-                            <i class="fas fa-shirt"></i> Uniforme
-                        </a>
-                    </li>
-                @endif
-                @if (\Illuminate\Support\Facades\Route::has('noticias.index'))
-                    <li class="nav-item">
-                        <a class="nav-link {{ request()->routeIs('noticia.*') ? 'active' : '' }}"
-                            href="{{ route('noticias.index') }}">
-                            <i class="fas fa-newspaper"></i> Noticias
-                        </a>
-                    </li>
-                @endif
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('course.*', 'courses.*') ? 'active' : '' }}"
+                        href="{{ route('courses.index') }}">
+                        <i class="fas fa-book"></i> Cursos
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('teacher.*', 'teachers.*') ? 'active' : '' }}"
+                        href="{{ route('teachers.index') }}">
+                        <i class="fas fa-chalkboard-user"></i> Instructores
+                    </a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('aprendiz.*', 'apprentices.*') ? 'active' : '' }}"
+                        href="{{ route('apprentices.index') }}">
+                        <i class="fas fa-user-graduate"></i> Aprendices
+                    </a>
+                </li>
 
             </ul>
 
@@ -88,27 +68,17 @@
 
                     <ul class="dropdown-menu">
 
-                        <li><a class="dropdown-item" href="{{ route('area.create') }}">Áreas</a></li>
+                        <li><a class="dropdown-item" href="{{ route('areas.index') }}">Áreas</a></li>
 
                         <li><a class="dropdown-item" href="{{ route('computers.index') }}">Computadores</a></li>
 
-                        <li><a class="dropdown-item" href="{{ route('training-center.create') }}">Centros</a></li>
+                        <li><a class="dropdown-item" href="{{ route('training-centers.index') }}">Centros</a></li>
 
-                        @if (\Illuminate\Support\Facades\Route::has('course.create'))
-                            <li><a class="dropdown-item" href="{{ route('course.create') }}">Cursos</a></li>
-                        @endif
+                        <li><a class="dropdown-item" href="{{ route('courses.index') }}">Cursos</a></li>
 
-                        @if (\Illuminate\Support\Facades\Route::has('teacher.create'))
-                            <li><a class="dropdown-item" href="{{ route('teacher.create') }}">Instructores</a></li>
-                        @endif
+                        <li><a class="dropdown-item" href="{{ route('teachers.index') }}">Instructores</a></li>
 
-                        @if (\Illuminate\Support\Facades\Route::has('aprendiz.create'))
-                            <li><a class="dropdown-item" href="{{ route('aprendiz.create') }}">Aprendices</a></li>
-                        @endif
-
-                        @if (\Illuminate\Support\Facades\Route::has('uniforme.index'))
-                            <li><a class="dropdown-item" href="{{ route('uniforme.index') }}">Uniforme SENA</a></li>
-                        @endif
+                        <li><a class="dropdown-item" href="{{ route('apprentices.index') }}">Aprendices</a></li>
 
                     </ul>
                 </li>
@@ -146,18 +116,6 @@
 
                         <li>
                             <hr class="dropdown-divider">
-                        </li>
-
-                        <li>
-                            {{-- Logout real: usa POST y CSRF para cerrar la sesion de forma segura. --}}
-                            @if (\Illuminate\Support\Facades\Route::has('logout'))
-                                <form method="POST" action="{{ route('logout') }}" class="logout-form">
-                                    @csrf
-                                    <button type="submit" class="dropdown-item text-danger">
-                                        <i class="fas fa-sign-out-alt me-2"></i>Cerrar sesión
-                                    </button>
-                                </form>
-                            @endif
                         </li>
 
                     </ul>

@@ -300,8 +300,8 @@
                         <td>{{ $apprentice['name'] }}</td>
                         <td>{{ $apprentice['email'] }}</td>
                         <td>{{ $apprentice['cell_number'] }}</td>
-                        <td>{{ $apprentice['course_id'] ?? 'Sin curso' }}</td>
-                        <td>{{ $apprentice['computer_id'] ?? 'Sin computador' }}</td>
+                        <td>{{ data_get($apprentice, 'course.numero_de_curso', 'Sin curso') }}</td>
+                        <td>{{ data_get($apprentice, 'computer.brand', 'Sin computador') }}</td>
                         <td class="acciones">
                             <a href="{{ route('aprendiz.show', $apprentice['id']) }}" class="mostrar">Mostrar</a>
                             <a href="{{ route('aprendiz.edit', $apprentice['id']) }}" class="editar">Editar</a>

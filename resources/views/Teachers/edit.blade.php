@@ -20,8 +20,7 @@
                                     Nombre
                                 </label>
                                 <input type="text" name="name" class="form-control"
-                                    value="{{ old('name', $teacher['name']) }}"
-                                    placeholder="Ingrese el nombre del profesor">
+                                    value="{{ old('name', $teacher['name']) }}" placeholder="Ingrese el nombre del profesor">
                             </div>
 
                             <div class="mb-3">

@@ -283,8 +283,7 @@
                         <td class="acciones">
                             <a href="{{ route('training-center.show', $trainingCenter['id']) }}"
                                 class="mostrar">Mostrar</a>
-                            <a href="{{ route('training-center.edit', $trainingCenter['id']) }}"
-                                class="editar">Editar</a>
+                            <a href="{{ route('training-center.edit', $trainingCenter['id']) }}" class="editar">Editar</a>
                             <form action="{{ route('training-center.destroy', $trainingCenter['id']) }}" method="POST">
                                 @csrf @method('DELETE')<button type="submit">Eliminar</button></form>
                         </td>

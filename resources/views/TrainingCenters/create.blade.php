@@ -22,7 +22,10 @@
                                 <label class="form-label fw-bold">
                                     Nombre del Centro
                                 </label>
-                                <input type="text" name="name" class="form-control"
+                                <input
+                                    type="text"
+                                    name="name"
+                                    class="form-control"
                                     placeholder="Ej. Centro de Innovación">
                             </div>
 
@@ -30,7 +33,10 @@
                                 <label class="form-label fw-bold">
                                     Ubicación
                                 </label>
-                                <input type="text" name="location" class="form-control"
+                                <input
+                                    type="text"
+                                    name="location"
+                                    class="form-control"
                                     placeholder="Ej. Bloque B, Piso 2">
                             </div>
 

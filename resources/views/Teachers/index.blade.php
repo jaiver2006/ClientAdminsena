@@ -283,8 +283,8 @@
                         <td class="numero">{{ $loop->iteration }}</td>
                         <td>{{ $teacher['name'] }}</td>
                         <td>{{ $teacher['email'] }}</td>
-                        <td>{{ $teacher['area_id'] ?? 'Sin área' }}</td>
-                        <td>{{ $teacher['training_centers_id'] ?? 'Sin centro' }}</td>
+                        <td>{{ data_get($teacher, 'area.name', 'Sin área') }}</td>
+                        <td>{{ data_get($teacher, 'training_center.name', 'Sin centro') }}</td>
                         <td class="acciones">
                             <a href="{{ route('teacher.show', $teacher['id']) }}" class="mostrar">Mostrar</a>
                             <a href="{{ route('teacher.edit', $teacher['id']) }}" class="editar">Editar</a>

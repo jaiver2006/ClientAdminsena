@@ -1,4 +1,5 @@
 <style>
+    /* El menu queda fijo mientras el usuario desplaza solo el contenido. */
     .sidebar {
         position: fixed !important;
         top: 0;
@@ -8,7 +9,6 @@
         height: 100vh;
         overflow-y: auto;
         z-index: 1000;
-
     }
 
     .sidebar::-webkit-scrollbar {
@@ -96,80 +96,47 @@
         {{-- La navegacion conserva las rutas existentes y marca la pagina activa. --}}
         <ul class="menu">
             <li>
-                <a class="nav-item {{ request()->routeIs('area.*') ? 'active' : '' }}"
-                    href="{{ route('area.create') }}">
+                <a class="nav-item {{ request()->routeIs('area.*', 'areas.*') ? 'active' : '' }}"
+                    href="{{ route('areas.index') }}">
                     <span class="nav-icon"><i class="fas fa-layer-group"></i></span>
                     <span>Áreas</span>
                 </a>
             </li>
             <li>
-                <a class="nav-item {{ request()->routeIs('computer.*') ? 'active' : '' }}"
+                <a class="nav-item {{ request()->routeIs('computer.*', 'computers.*') ? 'active' : '' }}"
                     href="{{ route('computers.index') }}">
                     <span class="nav-icon"><i class="fas fa-desktop"></i></span>
                     <span>Computadores</span>
                 </a>
             </li>
             <li>
-                <a class="nav-item {{ request()->routeIs('training-center.*') ? 'active' : '' }}"
-                    href="{{ route('training-center.create') }}">
+                <a class="nav-item {{ request()->routeIs('training-center.*', 'training-centers.*') ? 'active' : '' }}"
+                    href="{{ route('training-centers.index') }}">
                     <span class="nav-icon"><i class="fas fa-building"></i></span>
                     <span>Centros</span>
                 </a>
             </li>
-            @if (\Illuminate\Support\Facades\Route::has('course.create'))
-                <li>
-                    <a class="nav-item {{ request()->routeIs('course.*') ? 'active' : '' }}"
-                        href="{{ route('course.create') }}">
-                        <span class="nav-icon"><i class="fas fa-book"></i></span>
-                        <span>Cursos</span>
-                    </a>
-                </li>
-            @endif
-            @if (\Illuminate\Support\Facades\Route::has('teacher.create'))
-                <li>
-                    <a class="nav-item {{ request()->routeIs('teacher.*') ? 'active' : '' }}"
-                        href="{{ route('teacher.create') }}">
-                        <span class="nav-icon"><i class="fas fa-chalkboard-user"></i></span>
-                        <span>Instructores</span>
-                    </a>
-                </li>
-            @endif
-            @if (\Illuminate\Support\Facades\Route::has('aprendiz.create'))
-                <li>
-                    <a class="nav-item {{ request()->routeIs('aprendiz.*') ? 'active' : '' }}"
-                        href="{{ route('aprendiz.create') }}">
-                        <span class="nav-icon"><i class="fas fa-user-graduate"></i></span>
-                        <span>Aprendices</span>
-                    </a>
-                </li>
-            @endif
-            @if (\Illuminate\Support\Facades\Route::has('noticias.index'))
-                <li>
-                    <a class="nav-item {{ request()->routeIs('noticias.*') ? 'active' : '' }}"
-                        href="{{ route('noticias.index') }}">
-                        <span class="nav-icon"><i class="fas fa-newspaper"></i></span>
-                        <span>Noticias</span>
-                    </a>
-                </li>
-            @endif
-            @if (\Illuminate\Support\Facades\Route::has('informacion.index'))
-                <li>
-                    <a class="nav-item {{ request()->routeIs('informacion.*') ? 'active' : '' }}"
-                        href="{{ route('informacion.index') }}">
-                        <span class="nav-icon"><i class="fas fa-circle-info"></i></span>
-                        <span>¿Quiénes somos?</span>
-                    </a>
-                </li>
-            @endif
-            @if (\Illuminate\Support\Facades\Route::has('uniforme.index'))
-                <li>
-                    <a class="nav-item {{ request()->routeIs('uniforme.*') ? 'active' : '' }}"
-                        href="{{ route('uniforme.index') }}">
-                        <span class="nav-icon"><i class="fas fa-shirt"></i></span>
-                        <span>Uniforme SENA</span>
-                    </a>
-                </li>
-            @endif
+            <li>
+                <a class="nav-item {{ request()->routeIs('course.*', 'courses.*') ? 'active' : '' }}"
+                    href="{{ route('courses.index') }}">
+                    <span class="nav-icon"><i class="fas fa-book"></i></span>
+                    <span>Cursos</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item {{ request()->routeIs('teacher.*', 'teachers.*') ? 'active' : '' }}"
+                    href="{{ route('teachers.index') }}">
+                    <span class="nav-icon"><i class="fas fa-chalkboard-user"></i></span>
+                    <span>Instructores</span>
+                </a>
+            </li>
+            <li>
+                <a class="nav-item {{ request()->routeIs('aprendiz.*', 'apprentices.*') ? 'active' : '' }}"
+                    href="{{ route('apprentices.index') }}">
+                    <span class="nav-icon"><i class="fas fa-user-graduate"></i></span>
+                    <span>Aprendices</span>
+                </a>
+            </li>
         </ul>
     </nav>
 </aside>

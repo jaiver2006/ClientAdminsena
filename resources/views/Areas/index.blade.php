@@ -280,7 +280,6 @@
                 <tr>
                     <th class="numero">#</th>
                     <th>Nombre del Área</th>
-                    <th>Acciones</th>
                 </tr>
             </thead>
             <tbody>

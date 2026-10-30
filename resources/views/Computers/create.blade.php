@@ -23,13 +23,13 @@
                                 <label class="form-label fw-bold">
                                     Número del Computador
                                 </label>
-                                <input type="number" name="number" class="form-control" placeholder="Ej. 1024">
+                                <input type="number" name="numero" class="form-control" placeholder="Ej. 1024">
                             </div>
                             <div class="mb-4">
                                 <label class="form-label fw-bold">
                                     Marca
                                 </label>
-                                <input type="text" name="brand" class="form-control"
+                                <input type="text" name="marca" class="form-control"
                                     placeholder="Ej. Dell, Lenovo, HP">
                             </div>
                             <div class="d-grid">
