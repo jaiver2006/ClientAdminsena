@@ -7,7 +7,7 @@
                     <div class="card-header text-center text-white" style="background-color:#004d0f;">
                         <h3 class="mb-0">
                             <i class="fas fa-user-graduate me-2"></i>
-                            Registro de Aprendiz
+                            Registro de Aprendizz
                         </h3>
                     </div>
 
